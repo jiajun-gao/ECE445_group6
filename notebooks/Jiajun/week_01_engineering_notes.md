@@ -56,17 +56,11 @@ Why this matters: defining states and pin map this early prevents firmware rewri
 
 ## Diagrams and Figures
 
-**Figure 1. System block diagram showing ESP32-S3, motor driver, motors, LCD, microphone, speaker, IR cliff sensors, web panel over Wi-Fi, and battery.**
+![System block diagram of the desktop companion robot](images/block_diagram.png)
 
-Description: This figure shows the ESP32-S3 in the center, with audio (mic + PA + speaker), LCD via SPI, motor driver via four PWM GPIOs, two cliff sensor GPIOs, and a Wi-Fi link to a backend server and to the web panel. As shown in Figure 1, every subsystem either sends events to or receives commands from the ESP32-S3.
+**Figure 1. System block diagram showing the ESP32-S3 main controller and its connected subsystems: web panel inputs, Wi-Fi + safety logic, I2S microphone, speaker, cloud AI server, safety priority layer, IR sensors, ST7789 LCD face, TC118S motor driver, and battery / power module.**
 
-**Figure 2. Software state machine with idle, listening, speaking, moving, dance, follow, and safety_stop states.**
-
-Description: Transitions are driven by voice events, web panel commands, and sensor events. `safety_stop` can be entered from any state.
-
-**Figure 3. LCD face rendering pipeline as a function of current state.**
-
-Description: Per-state face assets are loaded into PSRAM and pushed over SPI; only the active region is updated each frame.
+This is the architecture I drafted this week and reviewed with Zichao. As shown in Figure 1, the ESP32-S3 sits in the center; every other block either sends events to it (mic, IR sensors, web panel) or receives commands from it (LCD, motor driver, speaker). The "Safety Priority Layer" block on the right is what becomes the safety latch in the firmware state machine, and is the reason safety events must be able to preempt every other state.
 
 ## Equations and Calculations
 
@@ -106,7 +100,7 @@ No hardware was available this week, so testing was limited to a desk review of 
 
 **Goal:** Confirm that every voice/web/sensor event has exactly one defined transition.
 
-**Setup:** Architecture document plus state diagram (Figure 2).
+**Setup:** Architecture document plus the hand-drawn state-machine sketch on my notebook (not committed).
 
 **Input Conditions:** Hand-traced events: `wake_word`, `tts_start`, `tts_end`, `cmd_forward`, `cmd_stop`, `cliff_front_triggered`, `dance_start`, `follow_start`.
 
@@ -134,13 +128,6 @@ No hardware was available this week, so testing was limited to a desk review of 
 
 - Architecture doc: added a "safety latch" rule to the state machine.
 - Pin map (draft): flagged strapping pins for review with Zichao before PCB layout.
-
-## References
-
-[1] ESP32-S3 Technical Reference Manual, Espressif Systems, `[link]`, accessed `[date]`.
-[2] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[3] ST7789 LCD Controller Datasheet, `[link]`, accessed `[date]`.
-[4] TC118S H-Bridge Driver Datasheet, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
