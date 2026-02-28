@@ -74,13 +74,7 @@ The single struct above means the web panel and the voice tool layer (`robot.mov
 
 ## Diagrams and Figures
 
-**Figure 1. Command dispatch flow from voice and web into the unified state machine.**
-
-Description: Both xiaozhi MCP tool calls and the web panel WebSocket messages produce a `command_t` struct, which is enqueued and consumed by the state machine. As shown in Figure 1, only the state machine talks to the motor and LCD subsystems.
-
-**Figure 2. Updated software state machine with explicit guards (safety latch, motion timer).**
-
-Description: This refines Figure 2 from Week 1 by labeling each transition with its guard.
+No new committed figures this week. Work was on code structure (transition table + dispatch struct) rather than visuals; the system-level block diagram from Week 1 (`block_diagram.png`) is still the relevant reference. Updated state-machine and command-dispatch sketches were kept in my paper notebook for the review with Zichao and have not been digitized.
 
 ## Equations and Calculations
 
@@ -149,13 +143,6 @@ Concrete \(D_{min}\) and \(D_{max}\) will be measured once Zichao's PCB is assem
 - State machine: added `safety_latched` flag and explicit guards.
 - Command interface: introduced `command_t` and `source` enum so voice and web share a path.
 - Pin map: locked `IO17/IO18` for cliff sensors and `IO5/IO6` for PDM audio, per discussion with Zichao.
-
-## References
-
-[1] ESP32-S3 Technical Reference Manual, Espressif Systems, `[link]`, accessed `[date]`.
-[2] TC118S H-Bridge Driver Datasheet, `[link]`, accessed `[date]`.
-[3] TCRT5000 IR Reflective Sensor Datasheet, `[link]`, accessed `[date]`.
-[4] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
