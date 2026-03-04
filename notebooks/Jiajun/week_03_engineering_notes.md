@@ -70,13 +70,11 @@ Discussion with Yuchen on the head/body sketch:
 
 ## Diagrams and Figures
 
-**Figure 1. Bring-up topology: laptop running local backend, dev board running xiaozhi + robot_core, web browser pointed at the dev board.**
+![System block diagram of the desktop companion robot](images/block_diagram.png)
 
-Description: Three-node setup used this week. As shown in Figure 1, audio flows dev board → laptop backend → dev board, while web panel commands flow browser → dev board directly.
+**Figure 1. System block diagram (re-used from Week 1) showing the ESP32-S3 main controller, the web panel input path, Wi-Fi + safety logic, I2S microphone, speaker, cloud AI server, safety priority layer, IR sensors, ST7789 LCD face, TC118S motor driver, and battery / power module.**
 
-**Figure 2. WebSocket message schema between web panel and device.**
-
-Description: Lists `kind` values in each direction and shows that `cmd` payloads map onto the device-side `command_t`.
+I am keeping Figure 1 in this week's notes because the bring-up work this week mapped the architecture onto a real dev board for the first time. As shown in Figure 1, the "Web Panel Inputs" block connects to the ESP32-S3 directly over Wi-Fi, while audio flows through the cloud AI server (running on my laptop for now). The arrows in Figure 1 are exactly the data paths I exercised this week: web panel → device for commands, device → server → device for the voice loop.
 
 ## Equations and Calculations
 
@@ -163,13 +161,6 @@ This is just for tracking; concrete values per term are filled in as `[latency r
 - Pin map: confirmed against Zichao's schematic round 1; updated silkscreen note (IR, not ToF) for round 2.
 - Architecture: `robot_core` separated from xiaozhi internals so it can be unit-tested on host.
 - Web panel schema: first version locked, matches `command_t` 1:1.
-
-## References
-
-[1] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[2] ESP32-S3 Technical Reference Manual, Espressif Systems, `[link]`, accessed `[date]`.
-[3] NS4150B Class-D Audio Power Amplifier Datasheet, `[link]`, accessed `[date]`.
-[4] WebSocket Protocol RFC 6455, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
