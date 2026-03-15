@@ -71,17 +71,11 @@ I am logging these as a single line per turn so I can `grep` and average.
 
 ## Diagrams and Figures
 
-**Figure 1. Web panel v1 layout.**
+![DeskBot Manual web panel v1, mobile view](images/human_control_web.jpg)
 
-Description: Sketch of the page — D-pad on the left, STOP in the center, mode toggle on the right, status row at the top. As shown in Figure 1, the page is a single screen with no navigation.
+**Figure 1. DeskBot Manual web panel served from the device at `192.168.4.1`, viewed on a phone browser. The page shows the connection state ("Connected"), the current mode pill ("Human Control"), the D-pad with corner-turn arrows and a center STOP, and a "Switch back to AI" mode toggle.**
 
-**Figure 2. MCP tool call → cmd event → state machine flow.**
-
-Description: Shows that voice intent and a panel button take the same path through `command_t` into the state machine.
-
-**Figure 3. Voice path timing diagram with the six stages tagged.**
-
-Description: Annotated timeline showing where each `t_*` is captured.
+This is the v1 panel I built this week. As shown in Figure 1, the entire controller fits on a single mobile screen with no scrolling and no framework — it is one HTML file embedded in firmware. The "Hold a direction to keep moving" hint at the bottom captures the hold-to-repeat behavior; releasing a button stops sending `cmd` messages, and the watchdog described next week takes over if the connection drops while a button is held.
 
 ## Equations and Calculations
 
@@ -171,13 +165,6 @@ Concrete numbers will be recorded in the latency log file.
 - MCP: `robot.move`, `robot.set_mode`, `robot.get_status`, `robot.dance` registered.
 - PCB feedback to Zichao: silkscreen for charge LED was off-center; he is fixing in round 3.
 - Exterior feedback to Yuchen: trim the front lip rather than moving the IR module.
-
-## References
-
-[1] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[2] WebSocket Protocol RFC 6455, `[link]`, accessed `[date]`.
-[3] TP4057 Linear Charger IC Datasheet, `[link]`, accessed `[date]`.
-[4] NS4150B Class-D Audio Power Amplifier Datasheet, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
