@@ -69,17 +69,11 @@ Discussion items with Yuchen on second body print:
 
 ## Diagrams and Figures
 
-**Figure 1. LCD face geometry parameters per state.**
+![Robot showing the rendered LCD face on the ST7789 display](images/face_expression.jpg)
 
-Description: Table-style figure showing eye radius, eye position, mouth shape per state. As shown in Figure 1, transitions interpolate parameters rather than swapping bitmaps.
+**Figure 1. The robot on the bench with the ST7789 LCD rendering the first geometry-driven face. The two rounded rectangles on a light-blue background are the "eyes" produced by the `lcd_face` module. The body PCB power LED is visible glowing green at the bottom of the body.**
 
-**Figure 2. Command watchdog timeline.**
-
-Description: Shows command arrivals while held, then silence after disconnect, with the synthetic `STOP` injected at 500 ms after the last command.
-
-**Figure 3. Voice-path latency 50-turn sample, per stage.**
-
-Description: Box plots of each `t_*` stage. As shown in Figure 3, `t_LLM` dominates while the rest are tight.
+This is the first time the `lcd_face` module ran on the actual chassis and not just on a breakout. As shown in Figure 1, the face is intentionally minimal — just two eye shapes — because the geometry-driven approach lets me animate state transitions by interpolating eye size, position, and the mouth shape rather than swapping bitmaps. The framing on the head matches what Yuchen and I locked in earlier: LCD centered, with enough bezel that the screen reads as a "face" rather than a panel.
 
 ## Equations and Calculations
 
@@ -178,13 +172,6 @@ We will tighten `t_watchdog` once we have measured motor coast distance.
 - Networking: 500 ms command watchdog in `MOVING`.
 - Audio: PA mute at boot.
 - Logging: tagged `t_wake/t_stream/t_asr/t_llm/t_tts/t_play` per voice turn.
-
-## References
-
-[1] ST7789 LCD Controller Datasheet, `[link]`, accessed `[date]`.
-[2] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[3] NS4150B Class-D Audio Power Amplifier Datasheet, `[link]`, accessed `[date]`.
-[4] LVGL Documentation (reference for geometry vs. sprite tradeoffs), `[link]`, accessed `[date]`.
 
 ## Next Steps
 
