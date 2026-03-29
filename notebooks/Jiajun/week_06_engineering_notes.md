@@ -75,17 +75,11 @@ Discussion items with Yuchen on the second body print:
 
 ## Diagrams and Figures
 
-**Figure 1. Dance routine table and the state-machine view of `DANCE`.**
+![Per-stage success rate of the voice + MCP pipeline](images/success_rate.png)
 
-Description: As shown in Figure 1, the executor walks the table while the state machine just sees a single `DANCE` state.
+**Figure 1. Per-stage success rate measured on the dev-board sandbox after the dance, LCD-task split, and follow-mode skeleton work were in place. ASR commit, end-to-end TTS, MCP tool calls, and TTS synth all measured at 100% success across the runs (24/24, 24/24, 13/13, 24/24). The LLM time-to-first-token (TTFT) stage measured at 58% (14/24).**
 
-**Figure 2. Two-core task split for LCD render vs. application logic.**
-
-Description: Shows render on core 1, application on core 0, and a lock-free queue between them.
-
-**Figure 3. Follow mode skeleton flow (sound direction → rotate command).**
-
-Description: Stubbed for now; the bottom of the diagram is dashed because the direction input is not yet wired.
+This is the first quantitative look I have at how the pipeline holds up across the stages I touched. As shown in Figure 1, every stage I directly own — MCP dispatch, TTS synth, end-to-end TTS — is hitting full success. The drop on the LLM TTFT stage matches the qualitative observation from earlier weeks that LLM turnaround is the dominant and least-controllable term, and is what I'll have to attack from the other side (smaller prompts, smaller model for short commands) rather than from the firmware.
 
 ## Equations and Calculations
 
@@ -174,13 +168,6 @@ We are targeting `f_PWM ≈ 20 kHz`. Final value will be tuned against the actua
 - LCD render moved to a dedicated task on core 1.
 - Face parameters: `dance` and `moving` diverged.
 - Follow mode skeleton (`robot.set_mode(follow)` + LCD face).
-
-## References
-
-[1] ESP32-S3 Technical Reference Manual (FreeRTOS / dual-core sections), Espressif Systems, `[link]`, accessed `[date]`.
-[2] TC118S H-Bridge Driver Datasheet, `[link]`, accessed `[date]`.
-[3] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[4] ST7789 LCD Controller Datasheet, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
