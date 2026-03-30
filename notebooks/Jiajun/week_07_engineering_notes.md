@@ -69,17 +69,11 @@ I deliberately powered things in this sequence: 3.3 V → boot → LCD → motor
 
 ## Diagrams and Figures
 
-**Figure 1. PCB bring-up dependency order.**
+![Mobile DeskBot Manual web panel connected to the assembled PCB](images/human_control_web.jpg)
 
-Description: Power → boot → LCD → motors → sensors. As shown in Figure 1, each step is gated on the previous one passing.
+**Figure 1. DeskBot Manual web panel (the same v1 page from Week 4) running against the manufactured PCB at `192.168.4.1`. The panel shows "Connected" and the "Human Control" mode pill, and was used to drive the first motor commands on real hardware.**
 
-**Figure 2. Motor PWM signal mapping to TC118S inputs.**
-
-Description: One PWM input + one direction input per motor; both motors are independent so we can do differential turns.
-
-**Figure 3. Cliff sensor debounce timing.**
-
-Description: Raw sensor signal vs. debounced signal vs. safety latch state.
+I reused the panel from Week 4 against the new board so I could exercise motor commands the moment power, boot, and LCD bring-up cleared. As shown in Figure 1, the same `Connected` indicator and `Human Control` pill that worked against the dev board worked against the production board on first try, which made the motor wiring and direction-polarity issue easy to isolate (the WebSocket layer was clearly fine, so the bug was further down).
 
 ## Equations and Calculations
 
@@ -201,13 +195,6 @@ I currently require ~20 ms of consistent reading; we can tighten this later.
 - Firmware: motor channel direction inverted in the speed map for the misw wired channel.
 - Firmware: cliff sensor GPIOs wired into the safety module with 20 ms software debounce.
 - Build: production PCB build flag added so I can keep the dev-board flag separate.
-
-## References
-
-[1] ESP32-S3 LEDC Peripheral Reference, Espressif Systems, `[link]`, accessed `[date]`.
-[2] ST7789 LCD Controller Datasheet, `[link]`, accessed `[date]`.
-[3] TC118S H-Bridge Driver Datasheet, `[link]`, accessed `[date]`.
-[4] TCRT5000 IR Reflective Sensor Datasheet, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
