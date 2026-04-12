@@ -74,17 +74,11 @@ Discussion with Yuchen during the trial assembly week:
 
 ## Diagrams and Figures
 
-**Figure 1. Dance table re-tune deltas.**
+![Per-turn voice latency breakdown over 24 turns](images/latency_image.png)
 
-Description: Old vs. new durations and peak duties per row. As shown in Figure 1, turns are the rows that changed the most.
+**Figure 1. Per-turn end-to-end voice latency over a 24-turn session (21:26:59 – 21:31:28). Bars are stacked by `LLM TTFT` (blue) and `TTS synth + send` (orange). Average end-to-end latency across the session is `2503 ms` (dashed green line). Per-turn values range from `324 ms` (turn 8) to `9110 ms` (turn 1).**
 
-**Figure 2. Follow mode v1 control loop.**
-
-Description: VAD energy → threshold → rotate-step → pause. Repeats while in `FOLLOW`.
-
-**Figure 3. Battery session log timeline.**
-
-Description: Timeline of the 30-minute session showing voice turns, motor activity, and any anomalies.
+This is from the long-session run on the assembled robot this week. As shown in Figure 1, the LLM time-to-first-token term is consistently small relative to the TTS synth + send term — so the dominant contributor for short commands is the TTS path, not the LLM, which is the opposite of what I had been assuming from earlier short samples. The cold-start outlier on turn 1 (`9110 ms`) is the expected first-turn warm-up; once the session is warm, the median sits well below the average. This figure is what I will tune against next week.
 
 ## Equations and Calculations
 
@@ -184,13 +178,6 @@ These will be filled in from on-chassis measurement next week.
 - Follow mode v1: single-mic VAD energy heuristic.
 - Build flag: cleaner separation of dev-board vs. PCB targets.
 - Logging: per-mode log line on every mode switch with the mode source (`voice`/`web`/`internal`).
-
-## References
-
-[1] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[2] TC118S H-Bridge Driver Datasheet, `[link]`, accessed `[date]`.
-[3] ESP32-S3 ADC / VAD references, Espressif Systems, `[link]`, accessed `[date]`.
-[4] Audio energy / VAD background reading, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
