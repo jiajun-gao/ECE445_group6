@@ -75,17 +75,17 @@ Discussion items with Yuchen on the integrated chassis:
 
 ## Diagrams and Figures
 
-**Figure 1. Adaptive energy threshold for follow mode.**
+![Fully assembled desktop companion robot with the LCD face on](images/face_expression.jpg)
 
-Description: Energy stream, slow-moving floor, threshold = floor + delta. As shown in Figure 1, voice events cross the threshold while ambient noise does not.
+**Figure 1. The fully assembled robot on the bench during the regression checklist run, with both batteries inside, all sensors wired, and the LCD rendering the idle face. The body PCB power LED is visible as a green glow at the bottom of the body shell, and the front IR cliff sensor module is centered just below the head/body seam.**
 
-**Figure 2. Full assembly test plan.**
+This is the first photograph of the complete system running with everything inside the printed exterior. As shown in Figure 1, the LCD face fits cleanly inside the head opening (no visible bezel from a normal desk-viewing distance), the IR cliff sensor sits where Yuchen and I placed it, and the printed body is wide enough to host both batteries and the body PCB without forcing the wires against the chassis. Every checklist item below was run with the robot in this exact assembled configuration.
 
-Description: 10-item checklist, mapped to subsystems.
+![Per-stage success rate after the full assembly](images/success_rate.png)
 
-**Figure 3. Internal cable routing diagram.**
+**Figure 2. Per-stage success rate across the regression run on the fully assembled robot: ASR commit, end-to-end TTS, MCP tool calls, and TTS synth at 100% (24/24, 24/24, 13/13, 24/24). LLM TTFT at 58% (14/24).**
 
-Description: LCD FPC, motor harness, mic/speaker leads, sensor leads — sketched against the chassis cross-section.
+As shown in Figure 2, assembly did not regress any of the per-stage success numbers compared to the dev-board sandbox in Week 6 — the firmware/hardware boundary held up. The LLM TTFT line is identical to before because LLM behavior is independent of which board the firmware runs on, which is the result I wanted to see.
 
 ## Equations and Calculations
 
@@ -183,13 +183,6 @@ Where \(C\) is `[battery capacity]` and \(I_{avg}\) is `[measured current]` aver
 - Follow mode: adaptive noise-floor threshold.
 - Logging: regression checklist runs are saved as a tagged log file.
 - Cable routing: head FPC folded under per Yuchen.
-
-## References
-
-[1] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[2] ESP32-S3 Technical Reference Manual, Espressif Systems, `[link]`, accessed `[date]`.
-[3] Audio VAD background reading, `[link]`, accessed `[date]`.
-[4] ST7789 LCD Controller Datasheet, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
