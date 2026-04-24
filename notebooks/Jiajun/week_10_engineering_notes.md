@@ -74,17 +74,11 @@ Discussion items with Yuchen:
 
 ## Diagrams and Figures
 
-**Figure 1. Web panel v2 layout (connection, D-pad, mode toggle, status).**
+![Jarvis Control Panel desktop web view](images/web_control_panel.png)
 
-Description: As shown in Figure 1, the panel is one screen with no navigation. The mode pill is read-only — toggling it issues a `SET_MODE` command that the device decides to accept or reject.
+**Figure 1. Jarvis Control Panel served from `localhost:8003` on the desktop browser. The panel shows the robot status block ("Robot — Disconnected, No device registered"), the current mode pill ("Idle — Waiting for input."), the last-latency readout ("28103 ms — ASR → first audio"), a free-text command input, four quick-action tiles (Dance, Follow, Human Mode, Stop), the manual-drive D-pad, and a Dance Status / "Rate the performance" panel.**
 
-**Figure 2. Voice → MCP → cmd dispatch path with schema-tightened arguments.**
-
-Description: Tool argument validation is now closer to the protocol boundary so failures are observable.
-
-**Figure 3. Mode-switch state diagram.**
-
-Description: Shows that voice commands are dropped in `human_control`, and panel commands are accepted in both modes (panel mode toggle, panel STOP) but only drive motors in `human_control`.
+This is the v2 panel I built this week, viewed on a laptop. As shown in Figure 1, the panel consolidates everything I want visible during a demo onto a single screen: connection state, current mode, last measured latency, both voice (free-text) and direct-drive (D-pad) inputs, and the four most common quick actions as tiles. The mode pill is read-only — clicking the "Human Mode" tile issues a `SET_MODE` command that the device decides to accept or reject, so the device stays the source of truth. The Dance Status / rating row is for capturing demo feedback during the rehearsals.
 
 ## Equations and Calculations
 
@@ -174,13 +168,6 @@ Per-stage values from this week's longer runs are recorded as `[latency result]`
 - Web panel v2: full controller layout, pushed status, device-as-source-of-truth mode toggle.
 - MCP: argument schema tightened; `unknown_arg` warning instead of silent drop.
 - Logging: per-mode-switch line includes the source.
-
-## References
-
-[1] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[2] WebSocket Protocol RFC 6455, `[link]`, accessed `[date]`.
-[3] Model Context Protocol (MCP) reference, `[link]`, accessed `[date]`.
-[4] ESP32-S3 Technical Reference Manual, Espressif Systems, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
