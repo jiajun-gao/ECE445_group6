@@ -1,0 +1,53 @@
+Weekly Progress Log – Week 3/9
+
+Project: Interactive Desktop Companion Robot
+Team: Jiajun Gao, Yuchen Shih, Zichao Wang
+
+This Week’s Progress
+
+This week, we focused on building and validating a breadboard-based prototype demo for the motion and safety subsystems of our robot.
+
+1. Remote Motor Control via Web Interface
+
+We successfully implemented a basic wireless control system using a mobile web interface. The robot connects to Wi-Fi and receives control commands from a browser-based controller.
+
+The following motion commands were implemented:
+
+Move forward
+Turn left
+Turn right
+Stop
+
+This functionality verifies the end-to-end communication pipeline between the user interface and the ESP32-based motor control system, and confirms correct integration with the motor driver.
+
+2. Safety Sensing Implementation (Dual Sensor Logic)
+
+To align with our system’s safety requirements (e.g., obstacle avoidance and desk-edge detection), we implemented two sensor-based safety mechanisms:
+
+(a) Front Obstacle Detection
+A front-facing distance sensor detects nearby obstacles.
+When an object is detected within a threshold distance, the robot immediately stops.
+This ensures basic obstacle avoidance behavior.
+(b) Downward Desk-Edge Detection
+A downward-facing sensor monitors the distance to the surface below the robot.
+If the detected distance exceeds a threshold (approximately 7 cm), the system assumes the robot is at the edge of a desk.
+In this case, all motor outputs are immediately disabled to prevent falling.
+The robot is only allowed to move when a valid surface is detected.
+
+This logic directly supports the fail-safe safety mechanism described in our design, where sensor input can override motor commands to ensure safe operation.
+
+Key Achievements
+Verified real-time Wi-Fi control → ESP32 → motor driver pipeline
+Successfully demonstrated basic mobility control
+Implemented real-time safety overrides using sensor feedback
+Built a working breadboard prototype for rapid testing
+
+Challenges
+Sensor readings can be slightly noisy and may require filtering or averaging
+Need to fine-tune threshold distances for more reliable detection
+Latency between web commands and motor response needs further optimization
+
+Next Steps
+Improve robustness of sensor readings (filtering / calibration)
+Transition from breadboard prototype to PCB implementation
+Begin integrating with higher-level systems (e.g., interaction modules)

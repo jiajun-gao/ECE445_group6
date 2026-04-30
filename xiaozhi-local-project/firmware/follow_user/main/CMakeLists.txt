@@ -1,0 +1,30 @@
+idf_component_register(
+    SRCS
+        "app_main.c"
+        "camera_manager/camera_manager.c"
+        "target_detector/target_detector.c"
+        "target_detector/detector_color.c"
+        "target_detector/detector_face.c"
+        "tracker/tracker.c"
+        "follow_controller/follow_controller.c"
+        "motor_control/motor_control.c"
+        "safety_manager/safety_manager.c"
+        "mode_manager/mode_manager.c"
+        "voice_bridge/voice_bridge.c"
+    INCLUDE_DIRS
+        "."
+        "include"
+        "camera_manager"
+        "target_detector"
+        "tracker"
+        "follow_controller"
+        "motor_control"
+        "safety_manager"
+        "mode_manager"
+        "voice_bridge"
+    REQUIRES
+        driver
+        esp_timer
+        esp32-camera
+        # esp-dl           # uncomment when wiring ESP_DL_FACE
+)

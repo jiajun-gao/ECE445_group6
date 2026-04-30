@@ -1,0 +1,115 @@
+# ============================================================
+# OS / editor noise
+# ============================================================
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+.idea/
+.vscode/
+.cache/
+.clangd/
+
+# ============================================================
+# Upstream third-party repos — clone these separately.
+# See README.md "Repository layout" section.
+# ============================================================
+xiaozhi-local-project/firmware/xiaozhi-esp32/
+xiaozhi-local-project/server/xiaozhi-esp32-server/
+xiaozhi-local-project/voiceprint/voiceprint-api/
+
+# ============================================================
+# Nested .git from upstream forks (we keep our customizations
+# but not their independent git history)
+# ============================================================
+xiaozhi-local-project/ECE445_group6/.git/
+
+# ============================================================
+# ESP-IDF / firmware build artifacts (ECE445_group6/)
+# ============================================================
+xiaozhi-local-project/ECE445_group6/build/
+xiaozhi-local-project/ECE445_group6/managed_components/
+xiaozhi-local-project/ECE445_group6/dependencies.lock
+xiaozhi-local-project/ECE445_group6/sdkconfig
+xiaozhi-local-project/ECE445_group6/sdkconfig.old
+xiaozhi-local-project/ECE445_group6/.cache/
+xiaozhi-local-project/ECE445_group6/releases/
+xiaozhi-local-project/ECE445_group6/main/assets/lang_config.h
+xiaozhi-local-project/ECE445_group6/main/mmap_generate_emoji.h
+xiaozhi-local-project/ECE445_group6/main/mmap_generate_*.h
+
+# Generic build outputs anywhere in the tree
+build/
+dist/
+tmp/
+*.bin
+*.elf
+*.map
+
+# ============================================================
+# Python (server / scripts)
+# ============================================================
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.venv/
+.venv.*/
+venv/
+env/
+.Python
+develop-eggs/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+share/python-wheels/
+.installed.cfg
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ============================================================
+# Node / web (manager-web, manager-mobile)
+# ============================================================
+node_modules/
+.npm/
+.yarn/
+yarn-error.log
+package-lock.json.bak
+
+# ============================================================
+# ML model weights — download separately, too large for git
+# ============================================================
+**/models/SenseVoiceSmall/
+**/models/snakers4_silero-vad/
+*.pt
+*.onnx
+*.pth
+*.ckpt
+
+# ============================================================
+# Audio / media artifacts that shouldn't live in git
+# ============================================================
+**/music/*.mp3
+**/music/*.wav
+**/music/*.m4a
+**/test/*.wav
+**/test/*.mp3
+
+# ============================================================
+# Secrets / local config
+# ============================================================
+.env
+*.env.local
+**/.env
+!**/.env.example
+**/data/.config.yaml
+!**/data/.config.yaml.example
+
+# ============================================================
+# Logs
+# ============================================================
+*.log
+logs/

@@ -1,0 +1,25 @@
+idx,asr_ts,asr_text,ttft_ms,e2e_ms,tool_count,tools,tts_text,aborted
+1,2026-04-28T21:26:59,'What is the weather today.',,9110,1,get_weather:5479ms:Action.RESPONSE,City: Urbana,0
+2,2026-04-28T21:27:19,'What is the day today.',480,916,0,,Today is Tuesday,0
+3,2026-04-28T21:27:29,'What is the time now.',746,1985,0,,The time is 9:27 PM,0
+4,2026-04-28T21:27:39,'Give me dance.',,2683,1,robot_dance:208ms:Action.RESPONSE,Watch my dance,0
+5,2026-04-28T21:27:53,'Give me a news.',,4253,1,get_news_from_newsnow:93ms:Action.RESPONSE,Source: BBC World. Headline: BBC reports from scene of fatal Indonesia train crash,0
+6,2026-04-28T21:28:09,'Moving forward.',,1050,1,robot_move:100ms:Action.RESPONSE,Robot motion accepted,0
+7,2026-04-28T21:28:15,'Moving back more.',1155,2975,0,,Robot motion accepted,0
+8,2026-04-28T21:28:26,'Moving left.',,324,1,robot_move:19ms:Action.RESPONSE,Robot motion accepted,0
+9,2026-04-28T21:28:36,'Follow my hand.',,1837,1,robot_follow_start:28ms:Action.RESPONSE,Okay,0
+10,2026-04-28T21:28:57,'To human control.',723,5478,1,robot_set_mode:219ms:Action.REQLLM,I am now in human control mode,0
+11,2026-04-28T21:29:09,'Sitch back.',820,4139,1,robot_set_mode:130ms:Action.REQLLM,I am now in AI mode,0
+12,2026-04-28T21:29:27,'What is the weather today.',,2038,1,get_weather:1ms:Action.RESPONSE,City: Urbana,0
+13,2026-04-28T21:29:38,'Give me some news.',531,1844,0,,Source: BBC World. Headline: BBC reports from scene of fatal Indonesia train crash,0
+14,2026-04-28T21:29:50,'Moving forward.',,894,1,robot_move:67ms:Action.RESPONSE,Robot motion accepted,0
+15,2026-04-28T21:29:55,'Do you right.',861,2518,0,,Robot motion accepted,0
+16,2026-04-28T21:30:03,'No backward.',1005,2132,0,,Robot motion accepted,0
+17,2026-04-28T21:30:10,'What is weather today.',834,2166,0,,City: Urbana,0
+18,2026-04-28T21:30:24,'Moving backward.',,1041,1,robot_move:32ms:Action.RESPONSE,Robot motion accepted,0
+19,2026-04-28T21:30:32,'Moving forward.',,1012,1,robot_move:28ms:Action.RESPONSE,Robot motion accepted,0
+20,2026-04-28T21:30:38,'Give me some news.',805,1834,0,,Source: BBC World. Headline: BBC reports from scene of fatal Indonesia train crash,0
+21,2026-04-28T21:30:53,'The date today.',810,3340,0,,Today is 2026-04-28 (星期二),0
+22,2026-04-28T21:31:05,'Spe.',1076,2631,0,,I'm sorry,0
+23,2026-04-28T21:31:15,'Tell me a joke.',779,1973,0,,Why did the scarecrow win an award?,0
+24,2026-04-28T21:31:28,'Bye bye.',881,1907,0,,Goodbye,0

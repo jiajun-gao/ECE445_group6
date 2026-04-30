@@ -1,0 +1,116 @@
+{
+  "log_window_seconds": 409.0,
+  "turns_total": 24,
+  "turns_with_ttft": 14,
+  "turns_with_e2e": 24,
+  "turns_aborted": 0,
+  "wake_greetings": 1,
+  "aborts": 0,
+  "echo_drops": 0,
+  "ttft_ms": {
+    "n": 14,
+    "mean": 821.8571428571429,
+    "p50": 815.0,
+    "p90": 1054.7,
+    "p95": 1103.6499999999999,
+    "max": 1155.0,
+    "min": 480.0
+  },
+  "e2e_ms": {
+    "n": 24,
+    "mean": 2503.3333333333335,
+    "p50": 2011.5,
+    "p90": 4218.8,
+    "p95": 5294.249999999997,
+    "max": 9110.0,
+    "min": 324.0
+  },
+  "tool_calls_total": 13,
+  "tool_timeouts": 0,
+  "per_tool": {
+    "self_audio_speaker_set_volume": {
+      "n": 1,
+      "mean": 214.0,
+      "p50": 214.0,
+      "p90": 214.0,
+      "p95": 214.0,
+      "max": 214.0,
+      "min": 214.0,
+      "actions": {
+        "Action.REQLLM": 1
+      }
+    },
+    "get_weather": {
+      "n": 2,
+      "mean": 2740.0,
+      "p50": 2740.0,
+      "p90": 4931.2,
+      "p95": 5205.099999999999,
+      "max": 5479.0,
+      "min": 1.0,
+      "actions": {
+        "Action.RESPONSE": 2
+      }
+    },
+    "robot_dance": {
+      "n": 1,
+      "mean": 208.0,
+      "p50": 208.0,
+      "p90": 208.0,
+      "p95": 208.0,
+      "max": 208.0,
+      "min": 208.0,
+      "actions": {
+        "Action.RESPONSE": 1
+      }
+    },
+    "get_news_from_newsnow": {
+      "n": 1,
+      "mean": 93.0,
+      "p50": 93.0,
+      "p90": 93.0,
+      "p95": 93.0,
+      "max": 93.0,
+      "min": 93.0,
+      "actions": {
+        "Action.RESPONSE": 1
+      }
+    },
+    "robot_move": {
+      "n": 5,
+      "mean": 49.2,
+      "p50": 32.0,
+      "p90": 86.8,
+      "p95": 93.39999999999999,
+      "max": 100.0,
+      "min": 19.0,
+      "actions": {
+        "Action.RESPONSE": 5
+      }
+    },
+    "robot_follow_start": {
+      "n": 1,
+      "mean": 28.0,
+      "p50": 28.0,
+      "p90": 28.0,
+      "p95": 28.0,
+      "max": 28.0,
+      "min": 28.0,
+      "actions": {
+        "Action.RESPONSE": 1
+      }
+    },
+    "robot_set_mode": {
+      "n": 2,
+      "mean": 174.5,
+      "p50": 174.5,
+      "p90": 210.1,
+      "p95": 214.54999999999998,
+      "max": 219.0,
+      "min": 130.0,
+      "actions": {
+        "Action.REQLLM": 2
+      }
+    }
+  }
+}
