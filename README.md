@@ -5,6 +5,8 @@
 
 A small **desktop robot** built on the **ESP32-S3** that listens for a wake word, talks to you with a streaming voice-AI pipeline, drives around your desk with cliff/obstacle safety, and shows a minimalist animated face on its onboard LCD. Internally, Jarvis is a custom-board fork of the open-source **XiaoZhi** AI chatbot stack, extended with our own PCB, motion subsystem, and face UI.
 
+📺 **Demo video:** [Jarvis in action on YouTube](https://m.youtube.com/watch?v=Ukdgd9zU8q8)
+
 ---
 
 ## 1. What Jarvis does
