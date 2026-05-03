@@ -100,17 +100,17 @@ Discussion items with Yuchen:
 
 ## Diagrams and Figures
 
-**Figure 1. Final web panel layout (Jarvis Control Panel).**
+![Final Jarvis Control Panel used during the demo](images/web_control_panel.png)
 
-Description: Status block, command input, quick-action tiles (Dance, Follow, Human Mode, Stop), manual drive D-pad, and a Dance Status / rating panel. As shown in Figure 1, the panel is intentionally one screen for clean demos.
+**Figure 1. Final Jarvis Control Panel layout used for the demo. The page contains: a Robot status block, a Mode pill (currently "Idle — Waiting for input."), a Last Latency readout ("28103 ms — ASR → first audio"), a free-text command input, four quick-action tiles (Dance, Follow, Human Mode, Stop), the Manual Drive D-pad, and a Dance Status / "Rate the performance" panel.**
 
-**Figure 2. Final voice path with optimization annotations.**
+This is the panel I drove the demo from. As shown in Figure 1, the layout is unchanged from Week 10 — what changed in this final week is the firmware behind it (latency tuning, finalized dance) rather than the UI itself.
 
-Description: Same six-stage breakdown as previous weeks, with this week's tuning labeled at each stage.
+![Per-turn voice latency over the final 24-turn session](images/latency_image.png)
 
-**Figure 3. Demo flow timeline.**
+**Figure 2. Per-turn end-to-end voice latency from the final long-session run on the assembled robot, 24 turns. Average end-to-end is `2503 ms` (dashed green line). Bars stack `LLM TTFT` (blue) and `TTS synth + send` (orange).**
 
-Description: Boot → wake-word → command → dance → safety stop → mode switch → manual drive. As shown in Figure 3, this is the ordered sequence captured in the demo video.
+As shown in Figure 2, the latency picture is consistent with what I measured in Week 8 — the cold-start outlier on turn 1 (`9110 ms`) is the warm-up cost; once the session is warm, most turns sit between roughly 1 s and 2.5 s end-to-end. The dominant contributor for short commands is the TTS synth + send segment, which is what this week's tuning targeted (smaller initial chunk size, reduced WebSocket buffer on the audio channel).
 
 ## Equations and Calculations
 
@@ -218,16 +218,6 @@ Tested explicitly during the final regression; observed times are well under the
 - Final web panel layout committed.
 - Engineering notes finalized.
 - README updated with demo video link.
-
-## References
-
-[1] xiaozhi-esp32 GitHub Repository, `[link]`, accessed `[date]`.
-[2] WebSocket Protocol RFC 6455, `[link]`, accessed `[date]`.
-[3] Model Context Protocol (MCP) reference, `[link]`, accessed `[date]`.
-[4] ESP32-S3 Technical Reference Manual, Espressif Systems, `[link]`, accessed `[date]`.
-[5] ST7789 LCD Controller Datasheet, `[link]`, accessed `[date]`.
-[6] TC118S H-Bridge Driver Datasheet, `[link]`, accessed `[date]`.
-[7] TCRT5000 IR Reflective Sensor Datasheet, `[link]`, accessed `[date]`.
 
 ## Next Steps
 
